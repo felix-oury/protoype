@@ -6,10 +6,12 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.awt.event.*;
 import javax.swing.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.IOException;
 
 
-public class LoginPanel extends JPanel implements ActionListener{
+public class LoginPanel extends JPanel{
 
     public JPanel LoginPanel,LogoPanel,Login;
     public FlowLayout grid;
@@ -19,8 +21,10 @@ public class LoginPanel extends JPanel implements ActionListener{
     public JLabel username,password,message;
     public JButton LoginButton;
     public Canvas drawing;
+    int PASS;
 
     public LoginPanel() throws IOException{
+        PASS=0;
         LoginPanel = new JPanel();
         LoginPanel.setBackground(Color.WHITE);
         LogoPanel = new JPanel();
@@ -43,6 +47,42 @@ public class LoginPanel extends JPanel implements ActionListener{
         BufferedImage myPicture = ImageIO.read(new File("/Users/felixoury/Desktop/docint.png"));
         JLabel logo = new JLabel(new ImageIcon(myPicture));
 
+        LoginButton.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {
+                String usernameS = textUsername.getText();
+                String passwordS = textPassword.getText();
+                if (usernameS.trim().equals("Felix") && passwordS.trim().equals("OK")) {
+                    message.setText(" Hello " + usernameS + "");
+                    PASS=1;
+
+                } else {
+                    message.setText("invalid User");
+                }
+
+                drawing.repaint();
+
+            }
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+
+
+
 
         LogoPanel.add(logo);
         Login.add(username);
@@ -64,21 +104,15 @@ public class LoginPanel extends JPanel implements ActionListener{
 
 
 
-    }
-    @Override
-    public void actionPerformed(ActionEvent e){
-        String usernameS = username.getText();
-        String passwordS =password.getText();
-        if(usernameS.trim().equals("Felix")&& passwordS.trim().equals("OK")){
-            message.setText(" Hello " + usernameS + "");
-        }
-        else{message.setText("invalid User");
-        }
+
 
     }
-
+    
     public JPanel getLoginPanel() {
         return LoginPanel;
+    }
+    public int getPASS(){
+        return PASS;
     }
 
 

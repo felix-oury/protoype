@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class ButtonPanel extends JPanel {
 
-    public JPanel LoginPanel;
+    public JPanel LoginPanel1;
     public JPanel LivePanelECG;
     public JPanel LivePanelHR;
     public JPanel LivePanelRR;
@@ -41,7 +41,7 @@ public class ButtonPanel extends JPanel {
 
     public ButtonPanel() throws IOException {
         LivePanel = new JPanel(new GridLayout(3,1));
-        LoginPanel = new JPanel();
+        LoginPanel1 = new JPanel();
         LivePanelECG = new JPanel(new GridLayout(2,1));
         LivePanelPID = new JPanel(new GridLayout());
         LivePanelRR = new JPanel(new GridLayout(2,1));
@@ -114,11 +114,11 @@ public class ButtonPanel extends JPanel {
             }
         });*/
 
-            LoginPanel.add(logo);
-            LoginPanel.add(username);
-            LoginPanel.add(textUsername);
-            LoginPanel.add(password);
-            LoginPanel.add(textPassword);
+            LoginPanel1.add(logo);
+            LoginPanel1.add(username);
+            LoginPanel1.add(textUsername);
+            LoginPanel1.add(password);
+            LoginPanel1.add(textPassword);
 
             LivePanelPID.add(PatientINFO);
             LivePanelECG.add(ECG);
